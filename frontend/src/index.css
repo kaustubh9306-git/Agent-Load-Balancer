@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Premium dark UI defaults */
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter,
+    "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+::selection {
+  background: rgba(56, 189, 248, 0.25);
+}
+
+@layer components {
+  .glass {
+    @apply relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.06] shadow-glow backdrop-blur-xl;
+  }
+
+  .glass::before {
+    content: "";
+    @apply pointer-events-none absolute inset-0 opacity-70;
+    background: radial-gradient(
+        1200px 500px at 20% 0%,
+        rgba(56, 189, 248, 0.18),
+        transparent 60%
+      ),
+      radial-gradient(
+        900px 500px at 90% 30%,
+        rgba(139, 92, 246, 0.16),
+        transparent 55%
+      );
+  }
+
+  .neon-border {
+    box-shadow: 0 0 0 1px rgba(148, 163, 184, 0.18),
+      0 0 30px rgba(56, 189, 248, 0.08),
+      0 0 35px rgba(139, 92, 246, 0.06);
+  }
+
+  .scanline::after {
+    content: "";
+    @apply pointer-events-none absolute inset-0 opacity-40;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(56, 189, 248, 0.18),
+      transparent
+    );
+    animation: scan 2.5s linear infinite;
+  }
+
+  .terminal {
+    @apply rounded-2xl border border-slate-800 bg-slate-950/70 backdrop-blur-xl;
+    box-shadow: 0 0 0 1px rgba(148, 163, 184, 0.12),
+      0 25px 60px rgba(0, 0, 0, 0.55);
+  }
+}
+
